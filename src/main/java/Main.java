@@ -3,18 +3,34 @@ import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
-        FixedList<String> names = new FixedList<String>(5);
+       //String
+        FixedList<String> people = new FixedList<String>(5);
+        people.add("Olivia");
+        people.add("Dave");
+        people.add("Jennifer");
+        people.add("Glynis");
+        people.add("Cynthia");
+        people.add("Alex");
 
-        names.add("Olivia");
-        names.add("Dave");
-        names.add("Jennifer");
-        names.add("Glynis");
-        names.add("Cynthia");
-        names.add("Alex");
+        System.out.println("Maximum size: " + people.getItems().size());
+        System.out.println("Current Members: " + people.getItems());
 
-        System.out.println("Maximum size: " + names.getItems().size());
-        System.out.println("Current Members: " + names.getItems());
+        //Interface
+        FixedList<Member> members = new FixedList<>(5);
+        NewMember Olivia = new NewMember("Olivia");
+        VipMembers Dave = new VipMembers("Dave");
+        members.add(Olivia);
+        members.add(Dave);
 
+        for(Member member : members.getItems()){
+            member.receiveReward();
+        }
+
+        Special<Member> specialMembers = new Special<>(new VipMembers("Dave"), new VipMembers("Jennifer"));
+        specialMembers.receiveReward();
+
+
+        //LocalDate
         FixedList<LocalDate> dates = new FixedList<>(3);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
 
